@@ -32,3 +32,15 @@ function deleteExpense(id) {
     }
     return false; // Expense with the given id was not found
 }
+
+// Event handler for form submission
+document.querySelector('#expenseForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const description = document.querySelector('#description').value;
+    const amount = parseFloat(document.querySelector('#amount').value);
+    addExpense(description, amount);
+    displayExpenses();
+    document.querySelector('#description').value = '';
+    document.querySelector('#amount').value = '';
+});
+
