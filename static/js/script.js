@@ -44,3 +44,21 @@ document.querySelector('#expenseForm').addEventListener('submit', (e) => {
     document.querySelector('#amount').value = '';
 });
 
+// Display expenses in the DOM
+function displayExpenses() {
+    const expenseList = document.querySelector('#expenseList');
+    expenseList.innerHTML = '';
+    expenses.forEach((expense) => {
+        const expenseElement = document.createElement('div');
+        expenseElement.innerHTML = `
+                    <p>${expense.description} - $${expense.amount}</p>
+                    <button onclick="editExpenseForm(${expense.id})">Edit</button>
+                    <button onclick="deleteExpense(${expense.id})">Delete</button>
+                `;
+        expenseList.appendChild(expenseElement);
+    });
+    // Update the total expenses display
+    document.querySelector('#totalExpenses').textContent = totalExpense.toFixed(2);
+}
+
+//
