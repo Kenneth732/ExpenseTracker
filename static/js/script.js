@@ -7,3 +7,18 @@ function addExpense(description, amount) {
     expenses.push(expense);
     totalExpense += amount;
 }
+
+function editExpense(id, updatedData) {
+    const expense = expenses.find((e) => e.id === id);
+    if (expense) {
+        for (const key in updatedData) {
+            if (expense.hasOwnProperty(key)) {
+                totalExpense -= expense[key];
+                expense[key] = updatedData[key];
+                totalExpense += updatedData[key];
+            }
+        }
+        return true; // Expense was edited successfully
+    }
+    return false; // Expense with the given id was not found
+}
