@@ -22,3 +22,13 @@ function editExpense(id, updatedData) {
     }
     return false; // Expense with the given id was not found
 }
+
+function deleteExpense(id) {
+    const index = expenses.findIndex((e) => e.id === id);
+    if (index !== -1) {
+        totalExpense -= expenses[index].amount;
+        expenses.splice(index, 1);
+        return true; // Expense was deleted successfully
+    }
+    return false; // Expense with the given id was not found
+}
