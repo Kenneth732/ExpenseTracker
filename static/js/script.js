@@ -61,4 +61,22 @@ function displayExpenses() {
     document.querySelector('#totalExpenses').textContent = totalExpense.toFixed(2);
 }
 
-//
+// Function to show an edit expense form
+function editExpenseForm(id) {
+    const expense = expenses.find((e) => e.id === id);
+    if (expense) {
+        const updatedDescription = prompt('Enter the new description:', expense.description);
+        const updatedAmount = parseFloat(prompt('Enter the new amount:', expense.amount));
+        const updatedData = {
+            description: updatedDescription,
+            amount: updatedAmount,
+        };
+        editExpense(id, updatedData);
+        displayExpenses();
+    } else {
+        alert('Expense not found.');
+    }
+}
+
+// Initial display of expenses
+displayExpenses();
